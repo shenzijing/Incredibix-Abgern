@@ -24,9 +24,8 @@ export const metadata: Metadata = {
     description: 'Create unique beats by dragging quirky characters into the mix. Join millions of players in this musical adventure!',
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+    icon: '/icon.png',
+    apple: '/icon.png',
   },
 };
 
@@ -37,9 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
+      <head />
       <body className={`${inter.className} flex flex-col min-h-screen`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"

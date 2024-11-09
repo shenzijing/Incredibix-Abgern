@@ -14,10 +14,10 @@ export default function Footer() {
               <span className="font-bold">Incredibox Abgerny</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Create, mix, and share your unique beats with our musical adventure game.
+              Create, mix, and share your unique beats with our musical art adventure game.
             </p>
           </div>
-          
+
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -38,7 +38,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
@@ -54,15 +54,15 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="font-semibold mb-4">Contact Us</h3>
             <p className="text-sm text-muted-foreground">
-              Email: support@incrediboxabgerny.com
+              info@abgerny.art
             </p>
           </div>
         </div>
-        
+
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>© {currentYear} Incredibox Abgerny. All rights reserved.</p>
           <p className="mt-2">

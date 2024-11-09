@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Maximize2 } from 'lucide-react';
+import { Maximize2, Minimize2 } from 'lucide-react';
 import { ShareButtons } from './share-buttons';
 
 export function GameFrame() {
@@ -47,10 +47,14 @@ export function GameFrame() {
           <Button
             variant="secondary"
             size="icon"
-            className="absolute bottom-4 right-4 opacity-80 hover:opacity-100"
+            className="absolute top-4 right-4 opacity-80 hover:opacity-100 bg-black/20 hover:bg-black/40 backdrop-blur-sm border-0"
             onClick={toggleFullscreen}
           >
-            <Maximize2 className="h-4 w-4" />
+            {isFullscreen ? (
+              <Minimize2 className="h-4 w-4 text-white" />
+            ) : (
+              <Maximize2 className="h-4 w-4 text-white" />
+            )}
           </Button>
         </div>
       </Card>

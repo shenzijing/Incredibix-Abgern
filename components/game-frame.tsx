@@ -39,7 +39,7 @@ export function GameFrame() {
       <Card className="relative overflow-hidden rounded-lg shadow-xl">
         <div className="aspect-video relative">
           <iframe
-            src="https://www.incredibox.com/demo/"
+            src="https://iframegame.com/embed/incredibox-abgerny/index.html"
             className="w-full h-full border-0"
             allow="autoplay; fullscreen"
             loading="lazy"

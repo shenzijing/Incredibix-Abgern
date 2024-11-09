@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     title: 'Incredibox Abgerny - Create Amazing Beats!',
     description: 'Create unique beats by dragging quirky characters into the mix. Join millions of players in this musical adventure!',
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -32,6 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className={`${inter.className} flex flex-col min-h-screen`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"

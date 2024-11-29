@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Maximize2, Play } from 'lucide-react';
+import { Maximize2 } from 'lucide-react';
 import { ShareButtons } from './share-buttons';
+import { PlayButtonOverlay } from './play-button-overlay';
 
 export function GameFrame() {
   const [mounted, setMounted] = useState(false);
@@ -62,16 +63,7 @@ export function GameFrame() {
       <Card className="relative overflow-hidden rounded-lg shadow-xl">
         <div className="aspect-video relative">
           {!isLoaded ? (
-            <div className="absolute inset-0 flex items-center justify-center bg-background/95 backdrop-blur-sm">
-              <Button
-                size="lg"
-                onClick={() => setIsLoaded(true)}
-                className="flex items-center gap-2"
-              >
-                <Play className="h-6 w-6" />
-                Play Game
-              </Button>
-            </div>
+            <PlayButtonOverlay onPlay={() => setIsLoaded(true)} />
           ) : (
             <iframe
               src="https://iframegame.com/embed/incredibox-abgerny/index.html"

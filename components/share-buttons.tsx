@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { X, Facebook, Share2, MessageCircle, Send } from 'lucide-react';
+import { Facebook, Share2 } from 'lucide-react';
+import { TwitterIcon, DiscordIcon, WhatsAppIcon } from './icons';
 
 export function ShareButtons() {
   const [mounted, setMounted] = useState(false);
@@ -46,10 +47,18 @@ export function ShareButtons() {
   };
 
   const shareOnDiscord = () => {
-    window.open(
-      `https://discord.com/share?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent('Incredibox Abgerny')}`,
-      '_blank'
-    );
+    const fullText = `${shareText}\n${shareUrl}`;
+    navigator.clipboard.writeText(fullText).then(() => {
+      alert('Link copied! Now you can paste it in Discord.');
+    }).catch(() => {
+      const textarea = document.createElement('textarea');
+      textarea.value = fullText;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      alert('Link copied! Now you can paste it in Discord.');
+    });
   };
 
   const shareNative = async () => {
@@ -75,7 +84,7 @@ export function ShareButtons() {
           onClick={shareOnTwitter}
           className="flex items-center gap-2 min-w-[120px]"
         >
-          <X className="h-4 w-4" />
+          <TwitterIcon className="h-4 w-4" />
           X (Twitter)
         </Button>
 
@@ -93,7 +102,7 @@ export function ShareButtons() {
           onClick={shareOnWhatsApp}
           className="flex items-center gap-2 min-w-[120px]"
         >
-          <MessageCircle className="h-4 w-4" />
+          <WhatsAppIcon className="h-4 w-4" />
           WhatsApp
         </Button>
 
@@ -102,7 +111,7 @@ export function ShareButtons() {
           onClick={shareOnDiscord}
           className="flex items-center gap-2 min-w-[120px]"
         >
-          <Send className="h-4 w-4" />
+          <DiscordIcon className="h-4 w-4" />
           Discord
         </Button>
 

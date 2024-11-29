@@ -60,53 +60,38 @@ export function ShareButtons() {
 
   return (
     <TooltipProvider>
-      <div className="flex justify-center gap-4">
-        <Tooltip>
-          <TooltipTrigger asChild>
+      <div className="flex flex-col items-center gap-4">
+        <h3 className="text-lg font-semibold">Share with friends</h3>
+        <div className="flex gap-4">
+          <Button
+            variant="outline"
+            onClick={shareOnTwitter}
+            className="flex items-center gap-2 min-w-[120px]"
+          >
+            <X className="h-4 w-4" />
+            X (Twitter)
+          </Button>
+
+          <Button
+            variant="outline"
+            onClick={shareOnFacebook}
+            className="flex items-center gap-2 min-w-[120px]"
+          >
+            <Facebook className="h-4 w-4" />
+            Facebook
+          </Button>
+
+          {canShare && (
             <Button
               variant="outline"
-              size="icon"
-              onClick={shareOnTwitter}
-              className="rounded-full"
+              onClick={shareNative}
+              className="flex items-center gap-2"
             >
-              <X className="h-4 w-4" />
-              <span className="sr-only">Share on X</span>
+              <Share2 className="h-4 w-4" />
+              More Options
             </Button>
-          </TooltipTrigger>
-          <TooltipContent>Share on X</TooltipContent>
-        </Tooltip>
-
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={shareOnFacebook}
-              className="rounded-full"
-            >
-              <Facebook className="h-4 w-4" />
-              <span className="sr-only">Share on Facebook</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>Share on Facebook</TooltipContent>
-        </Tooltip>
-
-        {canShare && (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={shareNative}
-                className="rounded-full"
-              >
-                <Share2 className="h-4 w-4" />
-                <span className="sr-only">Share</span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>Share</TooltipContent>
-          </Tooltip>
-        )}
+          )}
+        </div>
       </div>
     </TooltipProvider>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Maximize2 } from 'lucide-react';
@@ -11,6 +11,7 @@ export function GameFrame() {
   const [mounted, setMounted] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -26,11 +27,10 @@ export function GameFrame() {
   }, []);
 
   const toggleFullscreen = () => {
-    const iframe = document.querySelector('iframe');
-    if (!iframe) return;
+    if (!containerRef.current) return;
 
     if (!document.fullscreenElement) {
-      iframe.requestFullscreen().catch(err => {
+      containerRef.current.requestFullscreen().catch(err => {
         console.error(`Error attempting to enable fullscreen: ${err.message}`);
       });
     } else {
@@ -61,7 +61,7 @@ export function GameFrame() {
         </Button>
       </div>
       <Card className="relative overflow-hidden rounded-lg shadow-xl">
-        <div className="aspect-video relative">
+        <div ref={containerRef} className="aspect-video relative">
           {!isLoaded ? (
             <PlayButtonOverlay onPlay={() => setIsLoaded(true)} />
           ) : (
